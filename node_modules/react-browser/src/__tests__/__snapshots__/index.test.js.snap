@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Themed Button displays a button with requested text 1`] = `
+<button
+  className=""
+  type="primary"
+>
+  Click Me!
+</button>
+`;
+
+exports[`Themed Button displays a secondary button with requested text 1`] = `
+<button
+  className=""
+  type="secondary"
+>
+  ⊙_ʘ
+</button>
+`;
+
+exports[`Themed Styled Button displays a button with requested text 1`] = `
+<button
+  className=""
+>
+  Click Me!
+</button>
+`;
+
+exports[`Themed Styled Button displays a secondary button with requested text 1`] = `
+<button
+  className=""
+  type="secondary"
+>
+  ⊙_ʘ
+</button>
+`;
