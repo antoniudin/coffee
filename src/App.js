@@ -1,19 +1,18 @@
 import React, {useEffect, useState} from 'react'
-import FACTS from './components/FACTS'
-import NavBar from './components/NavBar'
-import Button from './components/Button'
+import FAQ from './pages/FAQ';
+import MAIN from './pages/MAIN';
+import Explore from './pages/Explore';
+import {Routes, Route} from 'react-router-dom';
 
 export default function App() {
-  const [users, setUsers] = useState([])
-  const text="text"
-  useEffect (()=> {
-    fetch('https://jsonplaceholder.typicode.com/users')
-  .then(response => response.json())
-  .then(json => setUsers(json))
-  }, [])
-  
+
   return (
     <div>
+      <Routes>
+        <Route path="/" exact element={<MAIN/>}/>
+        <Route path="/faq" element={<FAQ/>}/>
+        <Route path="/explore" element={<Explore/>}/>
+      </Routes>
     </div>
   )
 }

@@ -148,8 +148,10 @@ code {
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+  border: 1px solid #f4f3f3;
   background-color: white;
   width:max-content;
   border-radius: 100px 100px 100px 100px;
+
 }
 
