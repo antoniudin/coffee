@@ -1,2 +1,2 @@
 ## Copy of a famous service
-![logo](/assert/screenshot.png)
+![logo](/assets/screenshot.png)
