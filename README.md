@@ -1,3 +1,2 @@
-###Copy of one famous website
-
-![element] (/asserts/screenshot.png)
+## Copy of a famous service
+![logo](/assert/screenshot.png)
