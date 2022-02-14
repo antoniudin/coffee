@@ -157,5 +157,11 @@ code {
 
 .subscribers {
   display: flex;
-  
+  flex-direction: row;
+}
+
+.iconHeart {
+  width:24px;
+  height: 24px;
+  background-image: url('//src/img/');
 }
