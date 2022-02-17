@@ -224,3 +224,34 @@ code {
 .description {
   margin-bottom: 40px;
 }
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 40px);
+  row-gap: 2px;
+  column-gap: 2px;
+}
+
+.cell {
+  width:40px;
+  height: 40px;
+  background-color: rgb(179, 179, 179);  
+}
+
+.activeCell {
+  width:40px;
+  height: 40px;
+  background-color: #f7d025;  
+  border: 1px, solid, #f7d025;
+}
+
+.activeCell {
+  cursor: pointer;
+}
+
+.event {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: grey;
+}

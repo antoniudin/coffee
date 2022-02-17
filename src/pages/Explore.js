@@ -3,6 +3,7 @@ import '../navigation.css'
 import NavBar from '../components/NavBar'
 import Buttons from '../components/Buttons'
 import Portrait from '../components/Portrait'
+import Calendar from '../components/Calendar'
 
 export default function Explore(props) {
   
@@ -40,8 +41,10 @@ export default function Explore(props) {
         Musicians are here
         </div>}
 
-        {toggle=='Developers' && <div className="horizontal">
-        Developers are here
+        {toggle=='Developers' && <div className="horizontal">        
+
+        <Calendar/>
+
         </div>}
     </div>
   )
