@@ -227,7 +227,7 @@ code {
 
 .calendar {
   display: grid;
-  grid-template-columns: repeat(7, 40px);
+  grid-template-columns: repeat(7, 1fr);
   row-gap: 2px;
   column-gap: 2px;
 }
@@ -250,8 +250,18 @@ code {
 }
 
 .event {
-  width: 3px;
-  height: 3px;
+  width: 9px;
+  height: 9px;
+  margin:1px;
   border-radius: 50%;
-  background-color: grey;
+  background-color: rgb(24, 65, 136);
+}
+
+.event {
+  cursor: pointer;
+}
+
+.events {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
