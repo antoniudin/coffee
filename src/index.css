@@ -232,6 +232,12 @@ code {
   column-gap: 2px;
 }
 
+.calendarContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .cell {
   width:40px;
   height: 40px;
@@ -254,7 +260,9 @@ code {
   height: 9px;
   margin:1px;
   border-radius: 50%;
-  background-color: rgb(24, 65, 136);
+  background-color: rgb(23, 78, 172);
+  position: relative;
+  display: inline-block;
 }
 
 .event {
@@ -264,4 +272,73 @@ code {
 .events {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+}
+
+.monthButtonsPanel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight:bolder;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.monthArrow {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  width:20px;
+  height:20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background-color: #f7d025;
+}
+
+.monthF, .monthB {
+  width:6px;
+  height: 6px;
+  border:2px solid white;
+  border-top:none;
+  border-left: none;
+  transform: rotate(315deg);
+}
+
+.monthB {
+  transform: rotate(135deg);
+}
+
+.monthArrow:hover {
+  cursor: pointer;
+}
+
+.weekday {
+  text-align: center;
+  line-height: 40px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight:bolder;
+  background-color: rgb(23, 78, 172);
+  color: white;
+}
+
+.tooltip {
+  visibility: hidden;
+  width: max-content;
+  background-color: rgb(23, 78, 172);
+  color: #fff;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 6px;
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 150%;
+}
+
+.event:hover .tooltip {
+  visibility: visible;
 }
