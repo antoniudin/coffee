@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Fragment } from 'react/cjs/react.development'
 
-export default function Calendar() {
+export default function Calendar(props) {
   
   const week=['S','M','T','W','T','F','S']
   const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
@@ -48,14 +48,10 @@ export default function Calendar() {
 }
 
 function daysInMonth (month, year) {
-  console.log (`input month: ${month}`)
-  
   const emptyDays = weekday(month, year)
   const num = new Date(year, month+1, 0).getDate()
-  console.log(`num ${num}`)
   const days = fillCalendar(num)
   setState({...state, days, emptyDays})
-  console.log (`input moth: ${days} empty days ${emptyDays}`)
 }
 
   
@@ -96,6 +92,9 @@ function daysInMonth (month, year) {
     daysInMonth(month-1, year)
   }
 
+  function handleShowData (obj, month, year) {
+    props.click(obj, month, year)
+  }
 
   
   
@@ -113,11 +112,6 @@ function daysInMonth (month, year) {
     </div>
 
     
-
-
-    
-    
-    
     <div className="calendar">
     {week.map(day=> 
         <div className="cell weekday">{day}</div>
@@ -128,7 +122,7 @@ function daysInMonth (month, year) {
         )}
 
       {state.days.map(obj=> 
-        <div className={'activeCell'}>
+        <div onClick={()=> handleShowData(obj, month, year)} className={'activeCell'}>
             {obj}
             <div className="events">    
             {findEvent(obj).map(event=> 

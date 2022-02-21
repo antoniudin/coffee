@@ -16,7 +16,6 @@ export default function Explore(props) {
     {id:4, name:'Natasha', text:'text text text', num: 227, link: 'photo4'}
   ]
 
-  // const id = 1;
 
   function func (event) {
     setToggle(event.target.id)
