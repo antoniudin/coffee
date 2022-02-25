@@ -9,3 +9,12 @@ export function eventAdded (description) {
         }
     }
 }
+
+export function dateAdded (date) {
+    return {
+        type: actions.DATE_ADDED,
+        payload: {
+            date
+        }
+    }
+}

@@ -18,7 +18,7 @@ export default function App() {
     id:1,
     username:'Pavel Yudin',
     link:'pashkatrick',
-    logged:false,
+    logged:true,
   }
 
   // const loggedUser = {

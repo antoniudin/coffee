@@ -57,7 +57,7 @@ code {
 .page {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   background-color: #fcfcfc;
 
@@ -165,7 +165,6 @@ code {
 .likes {
   position: absolute;
   bottom: 0;
-  /* border: 1px solid red; */
 }
 
 .iconHeart {
@@ -236,6 +235,14 @@ code {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+}
+
+.eventContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .cell {
@@ -248,6 +255,14 @@ code {
   width:40px;
   height: 40px;
   background-color: #f7d025;  
+  border: 1px, solid, #f7d025;
+}
+
+.focusCell {
+  width:40px;
+  height: 40px;
+  background-color: rgb(23, 78, 172);  
+  color:white;
   border: 1px, solid, #f7d025;
 }
 
@@ -311,6 +326,10 @@ code {
   transform: rotate(135deg);
 }
 
+.monthBpale {
+  background-color: grey;
+}
+
 .monthArrow:hover {
   cursor: pointer;
 }
@@ -341,4 +360,80 @@ code {
 
 .event:hover .tooltip {
   visibility: visible;
+}
+
+.eventList {
+  
+}
+
+.eventListItem {
+
+}
+
+.carrotQuest {
+  position: sticky;
+  text-align: center;
+  color:white;
+  margin-left:calc(100% - 100px);
+  font-weight: bold;
+  bottom:40px;
+  width:50px;
+  line-height: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: black;
+}
+
+.carrotQuestMenu {
+  position: absolute;
+  text-align: left;
+  border-radius: 5px;
+  box-shadow: 4px 4px 2px #c7c7c7;
+  color:white;
+  font-weight: bold;
+  bottom:50px;
+  right:50px;
+  height: 100px;
+  width:200px;
+  background-color: white;
+}
+
+.carrotQuestMenuItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width:auto;
+  height: 32px;
+  line-height: 30px;
+  font-size: large;
+  color:grey;
+}
+
+.carrotQuestMenuItem:hover {
+  
+  background-color: #f4f4f4;
+  color:black;
+}
+
+.carrotQuest:hover{
+  cursor: pointer;
+}
+
+.carritQuestIcon {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.event_form {
+  display: flex;
+  flex-direction: column;
+  width:250px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-left: 10px;
+}
+
+.event_input {
+  border-radius: 1px;
+  line-height: 20px;
+  border:0;
 }

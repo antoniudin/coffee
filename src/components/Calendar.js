@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { Fragment } from 'react/cjs/react.development'
+import store from '../redux/store'
+import * as actions from '../redux/actionTypes'
 
-export default function Calendar(props) {
+function Calendar(props) {
   
   const week=['S','M','T','W','T','F','S']
   const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
 
+  const currentMonth = getMonth()
+  
+  const [focus, setFocus ] = useState()
   const [month, setMonth ] = useState(getMonth())
   const [year, setYear ] = useState(getYear())
   const [state, setState] = useState({
@@ -13,11 +18,12 @@ export default function Calendar(props) {
     days:[],
   })
   
-  const events=[
-    {id:1, day:2, providerId:1, consumerId:2, start:'5', end:'6', time:'pm', type:'meeting'},
-    {id:3, day:2, providerId:1, consumerId:2, start:'5', end:'6', time:'pm', type:'meeting'},
-    {id:4, day:7, providerId:1, consumerId:2, start:'4', end:'5', time:'pm', type:'phonecall'},
+  const events=[ 
+    {id:1, date:'2/2/2022', providerName:'', consumerId:2, start:'5', time:'pm', long:15},
+    {id:2, date:'3/31/2022', providerName:'', consumerId:2, start:'5', time:'pm', long:15},
+    {id:3, date:'2/10/2022', providerName:'', consumerId:2, start:'4', time:'pm', long:15},
   ]
+
 
   function getMonth() {
     const today = new Date();
@@ -35,7 +41,7 @@ export default function Calendar(props) {
 
   function tooltipBuilder(eventId){
     const event = events.find(event=>event.id==eventId)
-    const result = event.type + " from " + event.start + event.time + " to " + event.end + event.time
+    const result = "event" + " at " + event.start + event.time + " for " + event.long + " minutes"
     return result
   }
   
@@ -56,9 +62,10 @@ function daysInMonth (month, year) {
 
   
   function findEvent (day) {
+    const currentDate = month+1+"/"+day+"/"+year
     let activeEvents=[]
     events.forEach(event=> {
-        if (event.day==day) activeEvents.push(event)
+        if (event.date==currentDate) activeEvents.push(event)
     })
     return activeEvents
   }
@@ -81,6 +88,7 @@ function daysInMonth (month, year) {
       setMonth(month-11)
     }
     daysInMonth(month+1, year)
+    setFocus(null)
   }
 
   function backwardMonth (month) {
@@ -90,10 +98,19 @@ function daysInMonth (month, year) {
       setMonth(month+11)
     }
     daysInMonth(month-1, year)
+    setFocus(null)
   }
 
-  function handleShowData (obj, month, year) {
-    props.click(obj, month, year)
+  function handleShowData (obj) {
+    setFocus(obj)
+
+    store.dispatch({
+      type:actions.EVENT_ADDED,
+      payload:{
+          description:obj
+      }
+  })
+  console.log(store.getState())
   }
 
   
@@ -110,7 +127,6 @@ function daysInMonth (month, year) {
         <div className="monthF"></div>
       </div>
     </div>
-
     
     <div className="calendar">
     {week.map(day=> 
@@ -122,22 +138,23 @@ function daysInMonth (month, year) {
         )}
 
       {state.days.map(obj=> 
-        <div onClick={()=> handleShowData(obj, month, year)} className={'activeCell'}>
+        <div onClick={()=> handleShowData(obj, month, year)} className={`activeCell ${focus==obj? 'focusCell':null}`}>
             {obj}
             <div className="events">    
             {findEvent(obj).map(event=> 
                 <div className="event" key={event.id}>
                   <span class="tooltip">{tooltipBuilder(event.id)}</span>
-                  
                 </div>
                 )}
             </div>
         </div>
       )}
   </div>
-
-
   </div>
+
+  
 
   </Fragment>
 }
+
+export default Calendar
