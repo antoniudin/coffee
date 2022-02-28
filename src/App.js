@@ -6,12 +6,14 @@ import {Routes, Route} from 'react-router-dom';
 import ProviderCal from './pages/ProviderCal';
 import ConsumerCal from './pages/ConsumerCal';
 import NotFound from './pages/NotFound';
+import EventForm from './components/EventForm';
+import ConsumerEvent from './pages/ConsumerEvent';
 
 export default function App() {
 
   const providers = [
-    {id:1, link:'pashkatrick'},
-    {id:2, link:'a5hot'}
+    {id:1, link:'pashkatrick', name:'Pavel Yudin', timezone:''},
+    {id:2, link:'a5hot', name: 'Anton Yudin'}
   ]
 
   const loggedUser = {
@@ -28,6 +30,9 @@ export default function App() {
   //   logged:true,
   // }
 
+  const param1 = "param1"
+  const teamId = 2  
+
   return (
     <div>
       <Routes>
@@ -37,7 +42,11 @@ export default function App() {
       <Route path="/cons" element={<ConsumerCal/>}/>
       <Route path="/faq" element={<FAQ/>}/>
       {providers.map(provider=> 
-        <Route path={provider.link} element={<ConsumerCal link={provider.link}/>}/>
+        <Route>
+        <Route path={`${provider.link}`} element={<ConsumerEvent provider={provider}/>}/>
+        <Route path={`/${provider.link}/:yourEvent`} element={<ConsumerCal/>}/>
+        <Route path={`/${provider.link}/:yourEvent/:yourDate`} element={<EventForm/>}/>
+        </Route>
         )}
       <Route path="/" exact element={<MAIN/>}/>  
       <Route path="*" exact element={<NotFound/>}/>  
