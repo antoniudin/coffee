@@ -105,9 +105,9 @@ function daysInMonth (month, year) {
     setFocus(obj)
 
     store.dispatch({
-      type:actions.EVENT_ADDED,
+      type:actions.DATE_ADDED,
       payload:{
-          description:obj
+        date:month+'_'+year+'_'+obj
       }
   })
   console.log(store.getState())
@@ -152,7 +152,7 @@ function daysInMonth (month, year) {
   </div>
   </div>
 
-  
+            
 
   </Fragment>
 }
