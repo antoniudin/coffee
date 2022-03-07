@@ -10,11 +10,20 @@ export function eventAdded (description) {
     }
 }
 
-export function dateAdded (date) {
-    return {
+export function dateAdded (state=[], event) {
+    return [...state, {
         type: actions.DATE_ADDED,
         payload: {
-            date
-        }
-    }
+            event
+          }
+    }]
+}
+
+export function userLogin (state=[], user) {
+    return [...state, {
+        type: actions.USER_LOGIN,
+        payload: {
+            user
+          }
+    }]
 }

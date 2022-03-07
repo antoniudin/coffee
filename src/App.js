@@ -8,6 +8,10 @@ import ConsumerCal from './pages/ConsumerCal';
 import NotFound from './pages/NotFound';
 import EventForm from './components/EventForm';
 import ConsumerEvent from './pages/ConsumerEvent';
+import ProviderMain from './pages/ProviderMain';
+import Dashboard from './pages/Dashboard';
+import Account from './pages/Account';
+
 
 export default function App() {
 
@@ -30,17 +34,17 @@ export default function App() {
   //   logged:true,
   // }
 
-  const param1 = "param1"
-  const teamId = 2  
-
   return (
     <div>
       <Routes>
       <Route path="/explore:id" element={<Explore home={'test'}/>}/>
       <Route path="/explore" element={<Explore home={'test'}/>}/>
-      {loggedUser.logged && <Route path={`/login/${loggedUser.link}`} element={<ProviderCal user={loggedUser}/>}/>}
+      {loggedUser.logged && <Route path={`/login/${loggedUser.link}`} element={<Dashboard user={loggedUser}/>}/>}
+      {loggedUser.logged && <Route path={`/login/${loggedUser.link}//dashboard`} element={<Dashboard user={loggedUser}/>}/>}
       <Route path="/cons" element={<ConsumerCal/>}/>
       <Route path="/faq" element={<FAQ/>}/>
+      <Route path="/events" element={<ProviderMain/>}/>
+      <Route path="/account" element={<Account/>}/>
       {providers.map(provider=> 
         <Route>
         <Route path={`${provider.link}`} element={<ConsumerEvent provider={provider}/>}/>

@@ -14,7 +14,7 @@ export default function NavBar(props) {
   return (
     <div className='navbar'>
       <NavLink className="mainIcon" to='/'></NavLink>
-      <NavLink className={`${location.pathname=='/faq'? 'buttonActive' : 'button'}`} to='/faq'>FAQ</NavLink>
+      <NavLink className={`${location.pathname=='/faq'? 'buttonActive' : 'button'}`} to='/dashboard'>FAQ</NavLink>
       <NavLink className={`${location.pathname=='/explore'? 'buttonActive' : 'button'}`} to='/explore'>Explore features</NavLink>
         <div className="rightButtons">
           <NavLink className ='button' to='/login'>Login</NavLink>
