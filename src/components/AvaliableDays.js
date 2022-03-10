@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import TimeFrames from './TimeFrames'
 
@@ -11,100 +11,134 @@ export default function AvaliableDays() {
             id:1,
             value:'Sunday',
             avaliable:true,
-            gaps: [1],
-            timeGaps:[{}]
+            timeFrames: [
+                {id:1, from:0, to:0}
+            ],
             },
             {
             id:2,
             value:'Monday',
-            avaliable:true,
-            gaps: [1]
+            avaliable:false,
+            timeFrames: [{id:1, from:0, to:0}]
             },
             {
             id:3,
             value:'Tuesday',
-            avaliable:true,
-            gaps: [1]
+            avaliable:false,
+            timeFrames: [{id:1, from:0, to:0}]
             },
             {
             id:4,
             value:'Wednesday',
-            avaliable:true,
-            gaps: [1]
+            avaliable:false,
+            timeFrames: [{id:1, from:0, to:0}]
             },
             {
             id:5,
             value:'Thursday',
-            avaliable:true,
-            gaps: [1]
+            avaliable:false,
+            timeFrames: [{id:1, from:0, to:0}]
             },
             {
             id:6,
             value:'Friday',
-            avaliable:true,
-            gaps: [1]
+            avaliable:false,
+            timeFrames: [{id:1, from:0, to:0}]
             },
             {
             id:7,
             value:'Saturday',
             avaliable:false,
-            gaps: [1]
+            timeFrames: [{id:1, from:0, to:0}]
             }
     ])
 
     function handlePrint () {
-        console.log(week)
     }
 
     function handleDay (value) {
         let currentDay = week.find(day=> day.value==value)
-        currentDay.avaliable=!currentDay.avaliable        
+        const avaliable=!currentDay.avaliable        
+        const item = {
+            id:1,
+            from:0,
+            to:0
+        }
+        currentDay.timeFrames=[]
+        currentDay.timeFrames.push(item)
         setWeek([...week].map(object => {
             if(object.value === value) {
-              return {
-                ...object,
-                currentDay
+              return {...object,
+                  avaliable
               }
             }
             else return object;          
         }))
     }
     
-    function setTime (from, to) {
-        console.log(`${from} ${to}`)
+    function setTime (from, to, id, frame) {
+        const day = week.find(day=> day.id==id)
+        const timeFrames = day.timeFrames
+        timeFrames.map(f=> {
+            if (f.id==frame) {
+                f.from=from;
+                f.to=to
+            }
+        })
+
+        setWeek([...week].map(object => {
+            if(object.id === id) {
+              return {
+                ...object,
+                timeFrames
+              }
+            }
+            else return object;          
+        }))
     }
   
     function addTimeFrame (id) {
         const day = week.find(day=> day.id==id)
-        const newFrame = day.gaps[day.gaps.length-1]+1
-        day.gaps.push(newFrame)
+        const timeFrames = day.timeFrames
+        let newId = 1
+        timeFrames.forEach(frame=> {
+            if (frame.id>newId) newId=frame.id
+        })
+        newId++
+        const newTime = {
+            id:newId,
+            from:0,
+            to:0,
+        }
+        timeFrames.push(newTime)
         setWeek([...week].map(object => {
             if(object.id === id) {
               return {
                 ...object,
-                day
+                timeFrames
               }
             }
             else return object;          
         }))
-        //find a day, push the array of gaps
     }
+
+    useEffect (()=> {
+
+    })
 
     function deleteFrame (id, frame) {
         const day = week.find(day => day.id==id)
-        const indexFrame = day.gaps.indexOf(frame)
-        if (day.gaps.length==1) day.avaliable=false
-        day.gaps.splice(indexFrame,1)
+        const timeFrames = day.timeFrames.filter(gap => gap.id!=frame)
+        if (day.timeFrames.length<2) day.avaliable=false
         setWeek([...week].map(object => {
             if(object.id === id) {
               return {
                 ...object,
-                day
+                timeFrames
               }
             }
             else return object;          
         }))
-        console.log(week.find(day=> day.id==id).gaps)
     }
 
     return (
@@ -113,12 +147,14 @@ export default function AvaliableDays() {
             <div className="dayFrame">
             <input type="checkbox" onChange={()=>handleDay(day.value)} id={day.value} name={day.value} value={day.value} checked={day.avaliable}/>
             <label htmlFor={day.value}>{day.value}</label>            
-                {day.avaliable && day.gaps.map(frame => 
+                
+                {day.avaliable && day.timeFrames.map(frame => 
                     <div className="dayTimeFrame">
-                    <TimeFrames time={(from, to)=>setTime(from, to)}/>
-                    <button onClick={()=>{deleteFrame(day.id, frame)}} key={day.id}>del</button>
+                    <TimeFrames from={frame.from} to={frame.to} time={(from, to)=>setTime(from, to, day.id, frame.id)}/>
+                    <button onClick={()=>{deleteFrame(day.id, frame.id)}} key={frame.id}>del</button>
                     </div>
                     )}
+                
                 {day.avaliable? <button onClick={()=>addTimeFrame(day.id)}>+</button> : <p>This day is unavaliable</p>}
             </div>
             )}
