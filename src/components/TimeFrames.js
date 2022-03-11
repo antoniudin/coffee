@@ -1,40 +1,67 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef} from 'react'
+import timeBuilder from '../services/timeBuilder';
+
+export default function TimeFrames(props) {
+  
+  function handleClickOutside(event) {
+    const target = event.target.className;
+    if (target=="timeFrame" || target=="timeFrames null" || target=="dropdownButton") {
+        return null
+    }
+    else {
+        setFrom(false)
+        setTo(false)
+    }
+  }   
+  
 
 
-export default function TimeFrames() {
-    
-  const [currenFrom, setCurrentFrom] = useState(0)
-  const [currentTo, setCurrentTo] = useState(0)
+  //refactor later
+  const [currentFrom, setCurrentFrom] = useState(props.from)
+  const [currentTo, setCurrentTo] = useState(props.to)
   const [from, setFrom] = useState(false)
   const [to, setTo] = useState(false)
 
-  const am = [0,15,30,45,60,75,90]
+  const times = timeBuilder()
   
     function toggleFrom() {
-      const currentState = !from
-      setFrom(currentState)
+      const state = !from
+      setFrom(state)
     }
 
     function toggleTo() {
-      const currentState = !to
-      setTo(currentState)
+      const state = !to
+      setTo(state)
     }
 
     function handleFrom (time) {
-      setCurrentFrom(time)
-      toggleFrom()
+      if (time<currentTo || currentTo>=0) {
+        toggleFrom()
+        setCurrentFrom(time)
+        props.time(time, currentTo)
+      }
+      else {
+        //place for the validation
+      }
     }
 
     function handleTo (time) {
-      setCurrentTo(time)
-      toggleTo()
-    }
-
-    function fillTimeLine () {
-      for (let i=0; i<=45; i+15) {
-        am.push(i)
+      if (time>currentFrom) {
+        toggleTo()
+        setCurrentTo(time)
+        props.time(currentFrom, time)
+      }
+      else {
+        //place for the validation
       }
     }
+
+    useEffect (()=> {
+      document.addEventListener("mousedown", handleClickOutside);
+      if (props.from != currentFrom) setCurrentFrom(props.from) 
+      if (props.to != currentTo) setCurrentTo(props.to) 
+
+    },[props.from, props.to])
 
     function timeDecoder (num) {
       const hour = Math.floor((num/15)/4)
@@ -44,6 +71,7 @@ export default function TimeFrames() {
       return (`${hour}:${min}${m}`)
     }
 
+    //temporary implementation, refactor it later
     function pageClick() {
       if (from) setFrom(false)
       if (to) setTo(false)
@@ -52,18 +80,18 @@ export default function TimeFrames() {
     return (
     <div className="timeFramePage" onClick={()=>pageClick()}>
     <div className="timeFrameContainer">
-      <div className="timeFrameFrom">{timeDecoder(currenFrom)}
-        <button onClick={()=>toggleFrom()}>-</button>
+      <div className="timeFrameFrom">{timeDecoder(currentFrom)}
+        <button className="dropdownButton" onClick={()=>toggleFrom()}>-</button>
         <div className={`timeFrames ${!from? 'invisibleFrame':null}`}>
-        {am.map(time=> 
-          <div key={time} className={`${time==currenFrom? 'timeFrameActive' : 'timeFrame'}`} onClick={()=>handleFrom(time)}>{timeDecoder(time)}</div>
+        {times.map(time=> 
+          <div key={time} className={`${time==currentFrom? 'timeFrameActive' : 'timeFrame'}`} onClick={()=>handleFrom(time)}>{timeDecoder(time)}</div>
           )}
       </div>
       </div>
       <div className="timeFrameTo">{timeDecoder(currentTo)}
-        <button onClick={()=>toggleTo()}>-</button>
+        <button className="dropdownButton" onClick={()=>toggleTo()}>-</button>
         <div className={`timeFrames ${!to? 'invisibleFrame':null}`}>
-        {am.map(time=> 
+        {times.map(time=> 
           <div key={time} className={`${time==currentTo? 'timeFrameActive' : 'timeFrame'}`} onClick={()=>handleTo(time)}>{timeDecoder(time)}</div>
           )}
         </div>
