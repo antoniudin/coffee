@@ -7,7 +7,8 @@ function Calendar(props) {
   
   const week=['S','M','T','W','T','F','S']
   const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
-
+  const wdays = [0,1,2,3,4,5,6];
+  const unavailableDays = props.unavailableDays
   const currentMonth = getMonth()
   
   const [focus, setFocus ] = useState()
@@ -19,11 +20,10 @@ function Calendar(props) {
   })
   
   const events=[ 
-    {id:1, date:'2/2/2022', providerName:'', consumerId:2, start:'5', time:'pm', long:15},
-    {id:2, date:'3/31/2022', providerName:'', consumerId:2, start:'5', time:'pm', long:15},
-    {id:3, date:'2/10/2022', providerName:'', consumerId:2, start:'4', time:'pm', long:15},
+    {id:1, date:'2_2_2022', providerName:'', consumerId:2, start:'5', time:'pm', long:15},
+    {id:2, date:'3_31_2022', providerName:'', consumerId:2, start:'5', time:'pm', long:15},
+    {id:3, date:'2_10_2022', providerName:'', consumerId:2, start:'4', time:'pm', long:15},
   ]
-
 
   function getMonth() {
     const today = new Date();
@@ -45,10 +45,16 @@ function Calendar(props) {
     return result
   }
   
-  function fillCalendar (num) {
+  function fillCalendar (num, month, year) {
     const days = []
     for (let i=1; i<=num; i++) {
-      days.push(i)
+      const d = new Date(year, month, i)
+      const weekday = wdays[d.getDay()];
+      const day = {
+        id:i,
+        wday:wdays[weekday]
+      }
+      days.push(day)
     }
     return days
 }
@@ -56,13 +62,12 @@ function Calendar(props) {
 function daysInMonth (month, year) {
   const emptyDays = weekday(month, year)
   const num = new Date(year, month+1, 0).getDate()
-  const days = fillCalendar(num)
+  const days = fillCalendar(num, month, year)
   setState({...state, days, emptyDays})
 }
-
   
   function findEvent (day) {
-    const currentDate = month+1+"/"+day+"/"+year
+    const currentDate = month+1+"_"+day+"_"+year
     let activeEvents=[]
     events.forEach(event=> {
         if (event.date==currentDate) activeEvents.push(event)
@@ -72,7 +77,6 @@ function daysInMonth (month, year) {
 
   function weekday(month, year) {
     const emptyDays = []
-    const wdays = [0,1,2,3,4,5,6];
     const d = new Date(year, month, 1)
     const num = wdays[d.getDay()];
     for (let i=1; i<=num; i++) {
@@ -103,17 +107,13 @@ function daysInMonth (month, year) {
 
   function handleShowData (obj) {
     setFocus(obj)
-
     store.dispatch({
       type:actions.DATE_ADDED,
       payload:{
-        date:month+'_'+year+'_'+obj
+        date:month+'_'+year+'_'+obj.id
       }
   })
-  console.log(store.getState())
   }
-
-  
   
   return <Fragment>
     
@@ -132,14 +132,12 @@ function daysInMonth (month, year) {
     {week.map(day=> 
         <div className="cell weekday">{day}</div>
         )}
-      
       {state.emptyDays.map(day=> 
         <div className="cell"></div>
         )}
-
       {state.days.map(obj=> 
-        <div onClick={()=> handleShowData(obj, month, year)} className={`activeCell ${focus==obj? 'focusCell':null}`}>
-            {obj}
+        <div onClick={()=> handleShowData(obj)} className={`${focus==obj? 'focusCell':null} ${unavailableDays.filter(element=> element==obj.wday).length>0 ? 'cell':'activeCell'}`}>
+            {obj.id}
             <div className="events">    
             {findEvent(obj).map(event=> 
                 <div className="event" key={event.id}>

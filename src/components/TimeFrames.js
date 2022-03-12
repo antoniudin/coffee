@@ -5,7 +5,7 @@ export default function TimeFrames(props) {
   
   function handleClickOutside(event) {
     const target = event.target.className;
-    if (target=="timeFrame" || target=="timeFrames null" || target=="dropdownButton") {
+    if (target=="timeFrame" || target=="timeFrames null") {
         return null
     }
     else {
@@ -14,8 +14,6 @@ export default function TimeFrames(props) {
     }
   }   
   
-
-
   //refactor later
   const [currentFrom, setCurrentFrom] = useState(props.from)
   const [currentTo, setCurrentTo] = useState(props.to)
@@ -71,14 +69,8 @@ export default function TimeFrames(props) {
       return (`${hour}:${min}${m}`)
     }
 
-    //temporary implementation, refactor it later
-    function pageClick() {
-      if (from) setFrom(false)
-      if (to) setTo(false)
-    }
-
     return (
-    <div className="timeFramePage" onClick={()=>pageClick()}>
+    <div className="timeFramePage">
     <div className="timeFrameContainer">
       <div className="timeFrameFrom">{timeDecoder(currentFrom)}
         <button className="dropdownButton" onClick={()=>toggleFrom()}>-</button>
