@@ -1,17 +1,14 @@
-import React, {useEffect, useState} from 'react'
 import FAQ from './pages/FAQ';
 import MAIN from './pages/MAIN';
 import Explore from './pages/Explore';
 import {Routes, Route} from 'react-router-dom';
-import ProviderCal from './pages/ProviderCal';
 import ConsumerCal from './pages/ConsumerCal';
 import NotFound from './pages/NotFound';
 import EventForm from './components/EventForm';
 import ConsumerEvent from './pages/ConsumerEvent';
 import ProviderMain from './pages/ProviderMain';
-import Dashboard from './pages/Dashboard';
 import Account from './pages/Account';
-
+import Dashboard from './pages/Dashboard';
 
 export default function App() {
 
