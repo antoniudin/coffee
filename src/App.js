@@ -43,8 +43,9 @@ export default function App() {
       {loggedUser.logged && <Route path={`/login/${loggedUser.link}//dashboard`} element={<Dashboard user={loggedUser}/>}/>}
       <Route path="/cons" element={<ConsumerCal/>}/>
       <Route path="/faq" element={<FAQ/>}/>
+      <Route path="/dashboard" element={<Dashboard/>}/>
       <Route path="/events" element={<ProviderMain/>}/>
-      <Route path="/account" element={<Account/>}/>
+      <Route path="/mycalendar" element={<Account/>}/>
       {providers.map(provider=> 
         <Route>
         <Route path={`${provider.link}`} element={<ConsumerEvent provider={provider}/>}/>
