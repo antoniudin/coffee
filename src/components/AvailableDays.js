@@ -162,17 +162,19 @@ export default function Week() {
     <div className="">
         {week.map(day=> 
             <div className="dayFrame">
+            <div className="dayContainer">
             <input type="checkbox" onChange={()=>handleDay(day.value)} id={day.value} name={day.value} value={day.value} checked={day.avaliable}/>
-            <label htmlFor={day.value}>{day.value}</label>            
-                
+            <label htmlFor={day.value}>{day.value}</label>
+            {day.avaliable && <button onClick={()=>addTimeFrame(day.id)}>+</button>            }
+            </div>
                 {day.avaliable && day.timeFrames.map(frame => 
                     <div className="dayTimeFrame">  
                     <TimeFrames from={frame.from} to={frame.to} time={(from, to)=>setTime(from, to, day.id, frame.id)}/>
-                    <button onClick={()=>{deleteFrame(day.id, frame.id)}} key={frame.id}>del</button>
+                    <button className="frameDelete" onClick={()=>{deleteFrame(day.id, frame.id)}} key={frame.id}></button>
                     </div>
                     )}
                 
-                {day.avaliable? <button onClick={()=>addTimeFrame(day.id)}>+</button> : <p>This day is unavailable</p>}
+                {!day.avaliable && <p>This day is unavailable</p>}
             </div>
             )}
             <button className="buttonBright">Save</button>

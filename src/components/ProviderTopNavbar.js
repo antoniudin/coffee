@@ -2,12 +2,13 @@ import React from 'react'
 
 export default function ProviderTopNavbar() {
   
+  function LogOut() {
+    
+  }
 
-  
   return (
     <div className="providerTopNavbar">
-        <div className="providerTopNavbarButton">Login</div>
-        <div className="providerTopNavbarButton">Sign Up</div>
+        <div className="providerTopNavbarButton">Logout</div>
     </div>
   )
 }

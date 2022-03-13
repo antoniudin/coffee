@@ -42,7 +42,7 @@ export default function App() {
       <Route path="/faq" element={<FAQ/>}/>
       <Route path="/dashboard" element={<Dashboard/>}/>
       <Route path="/events" element={<ProviderMain/>}/>
-      <Route path="/mycalendar" element={<Account/>}/>
+      <Route path="/account" element={<Account/>}/>
       {providers.map(provider=> 
         <Route>
         <Route path={`${provider.link}`} element={<ConsumerEvent provider={provider}/>}/>

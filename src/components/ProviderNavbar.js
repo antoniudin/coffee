@@ -8,7 +8,7 @@ export default function ProviderNavbar(props) {
   return (
     <div className="provNav">
       <div className="providerNavLogo">Calendar.io</div>
-    {loggedUser && <NavLink className="providerNavButton" to='/dashboard'>Dashboard</NavLink>}
+      {loggedUser && <NavLink className="providerNavButton" to='/dashboard'>Dashboard</NavLink>}
       {loggedUser && <NavLink className="providerNavButton" to='/events'>Events</NavLink>}
       {loggedUser && <NavLink className="providerNavButton" to='/account'>Account</NavLink>}
     </div>

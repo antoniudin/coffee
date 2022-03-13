@@ -23,11 +23,16 @@ export default function TimeFrames(props) {
   const times = timeBuilder()
   
     function toggleFrom() {
+      console.log(from)
+      setTo(false)
+      setFrom(false)
       const state = !from
       setFrom(state)
     }
 
     function toggleTo() {
+      setFrom(false)
+      setTo(false)
       const state = !to
       setTo(state)
     }
