@@ -165,7 +165,7 @@ export default function Week() {
             <div className="dayContainer">
             <input type="checkbox" onChange={()=>handleDay(day.value)} id={day.value} name={day.value} value={day.value} checked={day.avaliable}/>
             <label htmlFor={day.value}>{day.value}</label>
-            {day.avaliable && <button onClick={()=>addTimeFrame(day.id)}>+</button>            }
+            {day.avaliable && <button className="frameAdd" onClick={()=>addTimeFrame(day.id)}></button>}
             </div>
                 {day.avaliable && day.timeFrames.map(frame => 
                     <div className="dayTimeFrame">  
@@ -173,8 +173,7 @@ export default function Week() {
                     <button className="frameDelete" onClick={()=>{deleteFrame(day.id, frame.id)}} key={frame.id}></button>
                     </div>
                     )}
-                
-                {!day.avaliable && <p>This day is unavailable</p>}
+                {!day.avaliable && <div>This day is unavailable</div>}      
             </div>
             )}
             <button className="buttonBright">Save</button>

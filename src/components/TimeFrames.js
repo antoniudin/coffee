@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef} from 'react'
 import timeBuilder from '../services/timeBuilder';
+import { CLIEngine } from 'eslint';
 
 export default function TimeFrames(props) {
   
@@ -7,6 +8,9 @@ export default function TimeFrames(props) {
     const target = event.target.className;
     if (target=="timeFrame" || target=="timeFrames null") {
         return null
+    }
+    if (target=="dropdownButtonOn") {
+        
     }
     else {
         setFrom(false)
@@ -78,15 +82,16 @@ export default function TimeFrames(props) {
     <div className="timeFramePage">
     <div className="timeFrameContainer">
       <div className="timeFrameFrom">{timeDecoder(currentFrom)}
-        <button className="dropdownButton" onClick={()=>toggleFrom()}>-</button>
+        <button className={`${from? 'dropdownButtonOff': 'dropdownButtonOn'}`} onClick={()=>toggleFrom()}></button>
         <div className={`timeFrames ${!from? 'invisibleFrame':null}`}>
         {times.map(time=> 
           <div key={time} className={`${time==currentFrom? 'timeFrameActive' : 'timeFrame'}`} onClick={()=>handleFrom(time)}>{timeDecoder(time)}</div>
           )}
       </div>
+      
       </div>
       <div className="timeFrameTo">{timeDecoder(currentTo)}
-        <button className="dropdownButton" onClick={()=>toggleTo()}>-</button>
+        <button className={`${to? 'dropdownButtonOff': 'dropdownButtonOn'}`} onClick={()=>toggleTo()}></button>
         <div className={`timeFrames ${!to? 'invisibleFrame':null}`}>
         {times.map(time=> 
           <div key={time} className={`${time==currentTo? 'timeFrameActive' : 'timeFrame'}`} onClick={()=>handleTo(time)}>{timeDecoder(time)}</div>

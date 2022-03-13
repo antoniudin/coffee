@@ -514,12 +514,15 @@ code {
 
 .timeFrameContainer, .dayTimeFrame, .dayContainer {
   display: flex;
-  flex-direction: row;
-  
+  flex-direction: row;  
+}
+
+.dayContainer {
+  margin-top:10px;
 }
 
 .dayTimeFrame {
-  
+  margin-top:5px;
 }
 
 .timeFrames {
@@ -539,5 +542,29 @@ code {
   height: 18px;
   background: url(../src/img/deleteButton.svg);
   border:none;
-  color:green;
+}
+
+.frameAdd {
+  width:18px;
+  height: 18px;
+  background: url(../src/img/addButton.svg);
+  border:none;
+}
+
+.dropdownButtonOff {
+  width:18px;
+  height: 18px;
+  background: url(../src/img/chooseFrame.svg);
+  border:none;
+}
+
+.dropdownButtonOn {
+  width:18px;
+  height: 18px;
+  background: url(../src/img/chooseFrame.svg);
+  border:1px solid green;
+}
+
+.frameAdd:hover, .frameDelete:hover {
+cursor: pointer;
 }
