@@ -476,8 +476,6 @@ code {
 .providerContent {
   margin-left: 250px;
   margin-top: 60px;
-  
-  border: 2px solid green;
 }
 
 .providerNavButton {
@@ -531,10 +529,6 @@ code {
   margin-top:30x;
   margin-bottom:30x;
 }
-
-/* .dayTimeFrame {
-  margin-top:3px;
-} */
 
 .timeFrames {
   width: 68px;
@@ -611,4 +605,14 @@ cursor: pointer;
 
 .timeFrameActive:hover {
   cursor: default;
+}
+
+.AvailableDays {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.weekSaveButton {
+  margin-top: 10px;
 }

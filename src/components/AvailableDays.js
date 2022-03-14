@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import TimeFrames from './TimeFrames'
 
-export default function Week() {
+export default function AvailableDays() {
   
     const loggedUser = ''
     
@@ -78,8 +78,8 @@ export default function Week() {
         const avaliable=!currentDay.avaliable        
         const item = {
             id:1,
-            from:0,
-            to:0
+            from:540,
+            to:1020
         }
         currentDay.timeFrames=[]
         currentDay.timeFrames.push(item)
@@ -159,7 +159,7 @@ export default function Week() {
     }
 
     return (
-    <div className="">
+    <div className="AvailableDays">
         {week.map(day=> 
             <div className="dayFrame">
             <div className="dayContainer">
@@ -176,7 +176,7 @@ export default function Week() {
                 {!day.avaliable && <div>This day is unavailable</div>}      
             </div>
             )}
-            <button className="buttonBright">Save</button>
+            <button className="weekSaveButton buttonBright">Save</button>
     </div>
   )
 }

@@ -3,14 +3,12 @@ import { NavLink, useLocation } from 'react-router-dom'
 
 export default function ProviderNavbar(props) {
   
-  const loggedUser = true
-  
   return (
     <div className="provNav">
       <div className="providerNavLogo">Calendar.io</div>
-      {loggedUser && <NavLink className="providerNavButton" to='/dashboard'>Dashboard</NavLink>}
-      {loggedUser && <NavLink className="providerNavButton" to='/events'>Events</NavLink>}
-      {loggedUser && <NavLink className="providerNavButton" to='/account'>Account</NavLink>}
+      <NavLink className="providerNavButton" to='/dashboard'>Dashboard</NavLink>
+      <NavLink className="providerNavButton" to='/events'>Events</NavLink>
+      <NavLink className="providerNavButton" to='/account'>Account</NavLink>
     </div>
   )
 }

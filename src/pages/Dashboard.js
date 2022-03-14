@@ -1,7 +1,6 @@
 import React from 'react'
 import ProviderNavbar from '../components/ProviderNavbar'
 import ProviderTopNavbar from '../components/ProviderTopNavbar'
-import Calendar from '../components/Calendar'
 import AvailableDays from '../components/AvailableDays'
 
 export default function Dashboard() {
@@ -12,12 +11,10 @@ export default function Dashboard() {
 
   return (
       <div className="providerMainPage">
-        {loggedUser && <ProviderNavbar/>}
+        <ProviderNavbar/>
         <div className="providerContent">
           <ProviderTopNavbar/>         
-          
           <AvailableDays/>
-
         </div>
     </div>
   )
