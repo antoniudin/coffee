@@ -124,8 +124,8 @@ export default function Week() {
         newId++
         const newTime = {
             id:newId,
-            from:0,
-            to:0,
+            from:540,
+            to:1020,
         }
         timeFrames.push(newTime)
         setWeek([...week].map(object => {
@@ -170,7 +170,7 @@ export default function Week() {
                 {day.avaliable && day.timeFrames.map(frame => 
                     <div className="dayTimeFrame">  
                     <TimeFrames from={frame.from} to={frame.to} time={(from, to)=>setTime(from, to, day.id, frame.id)}/>
-                    <button className="frameDelete" onClick={()=>{deleteFrame(day.id, frame.id)}} key={frame.id}></button>
+                    <div className="frameDelete" onClick={()=>{deleteFrame(day.id, frame.id)}} key={frame.id}></div>
                     </div>
                     )}
                 {!day.avaliable && <div>This day is unavailable</div>}      

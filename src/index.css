@@ -454,10 +454,10 @@ code {
   align-items: center;
   position: fixed;
   top:0;
+  left:250px;
   background-color: #f7d025;
   height: 50px;
   width: calc(100% - 250px);
-  /* border: 2px solid red; */
 }
 
 .providerTopNavbarButton {
@@ -469,11 +469,15 @@ code {
 .providerMainPage {
   display: flex;
   flex-direction: row;
+  display: grid;
+  justify-content: center;
 }
 
 .providerContent {
   margin-left: 250px;
   margin-top: 60px;
+  
+  border: 2px solid green;
 }
 
 .providerNavButton {
@@ -510,6 +514,7 @@ code {
 .dayFrame {
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
 }
 
 .timeFrameContainer, .dayTimeFrame, .dayContainer {
@@ -517,13 +522,19 @@ code {
   flex-direction: row;  
 }
 
-.dayContainer {
-  margin-top:10px;
+.dayTimeFrame {
+  justify-content: center;
+  align-items: center;
 }
 
-.dayTimeFrame {
-  margin-top:5px;
+.dayContainer {
+  margin-top:30x;
+  margin-bottom:30x;
 }
+
+/* .dayTimeFrame {
+  margin-top:3px;
+} */
 
 .timeFrames {
   width: 68px;
@@ -534,7 +545,7 @@ code {
   background-color:rgb(206, 206, 206);
   padding:3px;
   border-radius: 2px;
-  margin-top: 2px;
+  margin-top: 160px;
 }
 
 .frameDelete {
@@ -556,15 +567,48 @@ code {
   height: 18px;
   background: url(../src/img/chooseFrame.svg);
   border:none;
+  justify-content: center;
 }
 
 .dropdownButtonOn {
   width:18px;
   height: 18px;
   background: url(../src/img/chooseFrame.svg);
-  border:1px solid green;
+  border:none;
+  justify-content: center;
 }
 
 .frameAdd:hover, .frameDelete:hover {
 cursor: pointer;
+}
+
+.timeFrameContainer {
+  justify-content:space-between;
+  align-items: center;
+  height: 25px;
+  line-height: 25px;
+  width: 180px;
+}
+
+.timeFrameFrom, .timeFrameTo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-left: 3px;
+}
+
+.timeFrame:hover {
+  cursor: default;
+  background-color: #acaaaa;
+}
+
+.timeFrameActive {
+  background-color: black;
+  color: white;
+}
+
+.timeFrameActive:hover {
+  cursor: default;
 }
