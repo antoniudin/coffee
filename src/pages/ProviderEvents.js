@@ -1,19 +1,16 @@
 import React from 'react'
 import ProviderNavbar from '../components/ProviderNavbar'
 import ProviderTopNavbar from '../components/ProviderTopNavbar'
+import Events from '../components/Events'
 
-export default function ProviderMain() {
-  
-  const loggedUser = true
-  
+export default function ProviderEvents() {
   
   return (
       <div className="providerMainPage">
-        {loggedUser && <ProviderNavbar/>}
+        <ProviderNavbar/>
         <div className="providerContent">
           <ProviderTopNavbar/>
-          <div className="providerContentItem">1</div>          
-          <div className="providerContentItem">2</div>          
+          <Events/>
         </div>
     </div>
   )

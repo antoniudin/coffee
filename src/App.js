@@ -6,7 +6,7 @@ import ConsumerCal from './pages/ConsumerCal';
 import NotFound from './pages/NotFound';
 import EventForm from './components/EventForm';
 import ConsumerEvent from './pages/ConsumerEvent';
-import ProviderMain from './pages/ProviderMain';
+import ProviderEvents from './pages/ProviderEvents';
 import Account from './pages/Account';
 import Dashboard from './pages/Dashboard';
 
@@ -37,11 +37,11 @@ export default function App() {
       <Route path="/explore:id" element={<Explore home={'test'}/>}/>
       <Route path="/explore" element={<Explore home={'test'}/>}/>
       {loggedUser.logged && <Route path={`/login/${loggedUser.link}`} element={<Dashboard user={loggedUser}/>}/>}
-      {loggedUser.logged && <Route path={`/login/${loggedUser.link}//dashboard`} element={<Dashboard user={loggedUser}/>}/>}
+      {loggedUser.logged && <Route path={`/login/${loggedUser.link}/dashboard`} element={<Dashboard user={loggedUser}/>}/>}
       <Route path="/cons" element={<ConsumerCal/>}/>
       <Route path="/faq" element={<FAQ/>}/>
       <Route path="/dashboard" element={<Dashboard/>}/>
-      <Route path="/events" element={<ProviderMain/>}/>
+      <Route path="/events" element={<ProviderEvents/>}/>
       <Route path="/account" element={<Account/>}/>
       {providers.map(provider=> 
         <Route>

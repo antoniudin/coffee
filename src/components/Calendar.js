@@ -9,6 +9,7 @@ function Calendar(props) {
   const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
   const wdays = [0,1,2,3,4,5,6];
   const unavailableDays = props.unavailableDays
+  const events = props.events
   const currentMonth = getMonth()
   
   const [focus, setFocus ] = useState()
@@ -19,12 +20,6 @@ function Calendar(props) {
     days:[],
   })
   
-  const events=[ 
-    {id:1, date:'2_2_2022', providerName:'', consumerId:2, start:'5', time:'pm', long:15},
-    {id:2, date:'3_31_2022', providerName:'', consumerId:2, start:'5', time:'pm', long:15},
-    {id:3, date:'2_10_2022', providerName:'', consumerId:2, start:'4', time:'pm', long:15},
-  ]
-
   function getMonth() {
     const today = new Date();
     return today.getMonth();
@@ -139,7 +134,7 @@ function daysInMonth (month, year) {
         <div onClick={()=> handleShowData(obj)} className={`${focus==obj? 'focusCell':null} ${unavailableDays.filter(element=> element==obj.wday).length>0 ? 'cell':'activeCell'}`}>
             {obj.id}
             <div className="events">    
-            {findEvent(obj).map(event=> 
+            {findEvent(obj.id).map(event=> 
                 <div className="event" key={event.id}>
                   <span class="tooltip">{tooltipBuilder(event.id)}</span>
                 </div>

@@ -10,6 +10,7 @@ export default function ConsumerEvent (props) {
 
     const navigate = useNavigate();
 
+    //have to fetch from the server by loading provider
     const eventTypes = [
         '15min'
     ]

@@ -17,9 +17,6 @@ export default function ProviderCal(props) {
     {id:3, date:'3/31/2022', dd:5, mm:2, yy:2022, providerId:1, consumerId:2, start:'5', end:'6', time:'pm', type:'meeting', aproved:false},
     {id:4, date:'2/10/2022', dd:10, mm:3, yy:2022, providerId:1, consumerId:2, start:'4', end:'5', time:'pm', type:'phonecall', aproved:false},
   ]
-    useEffect (()=> {
-        
-    })
     
     function buildEvent (event) {
         const result = event.type + " from " + event.start + event.time + " to " + event.end + event.time
@@ -34,8 +31,6 @@ export default function ProviderCal(props) {
 
     return (
             <div className='page'>
-            
-            <p>Here is your Dashboard</p>
             
             <button onClick={()=>dateChoosen()}>Date is choosen</button>
 

@@ -3,15 +3,15 @@ import ProviderNavbar from '../components/ProviderNavbar'
 import ProviderTopNavbar from '../components/ProviderTopNavbar'
 import AvailableDays from '../components/AvailableDays'
 
-export default function Dashboard() {
+export default function Dashboard(props) {
   
-  const loggedUser = true
+  const loggedUser = props.loggedUser
 
   const unavailableDays=[1]
 
   return (
       <div className="providerMainPage">
-        <ProviderNavbar/>
+        <ProviderNavbar loggedUser={loggedUser}/>
         <div className="providerContent">
           <ProviderTopNavbar/>         
           <AvailableDays/>
