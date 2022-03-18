@@ -631,3 +631,45 @@ cursor: pointer;
   flex-direction: row;
   margin-right: 10px;
 }
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.activeFrame {
+  border:1px solid blue
+}
+
+.activeTime {
+  background-color: black;
+  color:white;
+}
+
+.columnFrame {
+  width: 82px;
+}
+
+.testCurrent {
+  width: 60px;
+}
+
+.testCurrentActive {
+  width: 60px;
+}
+
+.testFrame {
+  width: 82px;
+  height:5em;
+  overflow-y:auto;
+	float:left;
+	position:absolute;
+  background-color:rgb(206, 206, 206);
+  background-color: grey;
+}
+
+.testFrameInv {
+  display: none;
+}
+
+

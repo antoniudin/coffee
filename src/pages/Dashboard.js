@@ -2,12 +2,15 @@ import React from 'react'
 import ProviderNavbar from '../components/ProviderNavbar'
 import ProviderTopNavbar from '../components/ProviderTopNavbar'
 import AvailableDays from '../components/AvailableDays'
+import TestTime from '../components/TestTime'
 
 export default function Dashboard(props) {
   
   const loggedUser = props.loggedUser
 
-  const unavailableDays=[1]
+  function setTime (time) {
+    console.log(time)
+  } 
 
   return (
       <div className="providerMainPage">
@@ -15,6 +18,9 @@ export default function Dashboard(props) {
         <div className="providerContent">
           <ProviderTopNavbar/>         
           <AvailableDays/>
+          <TestTime setTime={(time)=>setTime(time)} time={0}/>
+          <br />
+          
         </div>
     </div>
   )

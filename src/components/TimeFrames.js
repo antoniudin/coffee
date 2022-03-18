@@ -1,5 +1,6 @@
-import React, { useEffect, useState, useRef} from 'react'
+import React, { useEffect, useState, useRef, Fragment} from 'react'
 import timeBuilder from '../services/timeBuilder';
+import TestTime from './TestTime';
 
 export default function TimeFrames(props) {
   
@@ -26,7 +27,6 @@ export default function TimeFrames(props) {
   const times = timeBuilder()
   
     function toggleFrom() {
-      console.log(from)
       setTo(false)
       setFrom(false)
       const state = !from
@@ -78,6 +78,7 @@ export default function TimeFrames(props) {
     }
 
     return (
+    <Fragment>
     <div className="timeFramePage">
     <div className="timeFrameContainer">
       <div className="timeFrameFrom">{timeDecoder(currentFrom)}
@@ -99,5 +100,6 @@ export default function TimeFrames(props) {
         </div>
     </div>
     </div>
+    </Fragment>
   )
 }
