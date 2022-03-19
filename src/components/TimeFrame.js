@@ -1,12 +1,13 @@
 import React, { useState , useRef, useEffect} from 'react'
 import useOutsideClick from '../services/useOutsideClick'
+import  timeBuilder from '../services/timeBuilder'
 import { timeDecoder } from '../services/timeBuilder'
 
-export default function TestTime(props) {
+export default function TimeFrame(props) {
     
     const ref = useRef()
 
-    const times = [0,15,30,45,60,750] 
+    const times = timeBuilder()
     
     const [state, setToggle] = useState({
         toggle:false,
@@ -35,11 +36,11 @@ export default function TestTime(props) {
     return (
     <div ref={ref} className="columnFrame">
         <div className={`rowFrame ${state.toggle? "activeFrame":"nonActiveFrame"}`}>
-            <div className="testCurrent">{timeDecoder(state.currentTime)}</div>
+            <div className="timeCurrent">{timeDecoder(state.currentTime)}</div>
             <div className={`${!state.toggle? "arrowDown" : "arrowUp"}`} onClick={()=>toggle()}></div>
         </div>
         
-        <div className={`${state.toggle? "testFrame":"testFrameInv"}`}>
+        <div className={`${state.toggle? "timeFrame":"timeFrameInv"}`}>
         {times.map(time=> 
             <div className={`${time==state.currentTime? "activeTime":"nonActiveTime"}`} key={time} onClick={()=>setTime(time)}>{timeDecoder(time)}</div>
             )}

@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useState } from 'react'
-import TimeFrames from './TimeFrames'
 import TimeSlot from '../components/TimeSlot'
 
 export default function AvailableDays() {
@@ -66,6 +65,18 @@ export default function AvailableDays() {
             }
     ])
 
+    function updateWeek (id, timeFrames) {
+        setWeek([...week].map(obj => {
+            if(obj.id === id) {
+              return {
+                ...obj,
+                timeFrames
+              }
+            }
+            else return obj;          
+        }))
+    }
+
     function handleDay (value) {
         let currentDay = week.find(day=> day.value==value)
         const avaliable=!currentDay.avaliable        
@@ -95,16 +106,7 @@ export default function AvailableDays() {
                 else f.to=time
             }
         })
-
-        setWeek([...week].map(object => {
-            if(object.id === id) {
-              return {
-                ...object,
-                timeFrames
-              }
-            }
-            else return object;          
-        }))
+        updateWeek(id, timeFrames)
     }
   
     function addTimeFrame (id) {
@@ -121,30 +123,14 @@ export default function AvailableDays() {
             to:1020,
         }
         timeFrames.push(newTime)
-        setWeek([...week].map(object => {
-            if(object.id === id) {
-              return {
-                ...object,
-                timeFrames
-              }
-            }
-            else return object;          
-        }))
+        updateWeek(id, timeFrames)
     }
 
     function deleteFrame (id, frame) {
         const day = week.find(day => day.id==id)
         const timeFrames = day.timeFrames.filter(gap => gap.id!=frame)
         if (day.timeFrames.length<2) day.avaliable=false
-        setWeek([...week].map(object => {
-            if(object.id === id) {
-              return {
-                ...object,
-                timeFrames
-              }
-            }
-            else return object;          
-        }))
+        updateWeek(id, timeFrames)
     }
 
     return (

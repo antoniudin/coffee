@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import TestTime from './TestTime'
-
+import TimeFrame from './TimeFrame'
 
 export default function TimeSlot(props) {
   
@@ -27,9 +26,9 @@ export default function TimeSlot(props) {
   
     return (
     <div className="row">
-        <TestTime setTime={(time)=>setFrom(time)} time={props.from}/>
+        <TimeFrame setTime={(time)=>setFrom(time)} time={props.from}/>
         <div className="timeGap"> - </div>
-        <TestTime setTime={(time)=>setTo(time)} time={props.to}/>
+        <TimeFrame setTime={(time)=>setTo(time)} time={props.to}/>
     </div>
   )
 }
