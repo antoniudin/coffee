@@ -4,20 +4,6 @@ import TestTime from './TestTime';
 
 export default function TimeFrames(props) {
   
-  function handleClickOutside(event) {
-    const target = event.target.className;
-    if (target=="timeFrame" || target=="timeFrames null") {
-        return null
-    }
-    if (target=="dropdownButtonOn") {
-        
-    }
-    else {
-        setFrom(false)
-        setTo(false)
-    }
-  }   
-  
   //refactor later
   const [currentFrom, setCurrentFrom] = useState(props.from)
   const [currentTo, setCurrentTo] = useState(props.to)
@@ -27,17 +13,17 @@ export default function TimeFrames(props) {
   const times = timeBuilder()
   
     function toggleFrom() {
-      setTo(false)
-      setFrom(false)
-      const state = !from
-      setFrom(state)
+      // setTo(false)
+      // setFrom(false)
+      // const state = !from
+      // setFrom(state)
     }
 
     function toggleTo() {
-      setFrom(false)
-      setTo(false)
-      const state = !to
-      setTo(state)
+      // setFrom(false)
+      // setTo(false)
+      // const state = !to
+      // setTo(state)
     }
 
     function handleFrom (time) {
@@ -63,7 +49,6 @@ export default function TimeFrames(props) {
     }
 
     useEffect (()=> {
-      document.addEventListener("mousedown", handleClickOutside);
       if (props.from != currentFrom) setCurrentFrom(props.from) 
       if (props.to != currentTo) setCurrentTo(props.to) 
 
@@ -103,3 +88,4 @@ export default function TimeFrames(props) {
     </Fragment>
   )
 }
+

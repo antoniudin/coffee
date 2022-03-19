@@ -353,7 +353,7 @@ code {
   border-radius: 6px;
   /* Position the tooltip text - see examples below! */
   position: absolute;
-  z-index: 1;
+  /* z-index: 1; */
   top: -5px;
   left: 150%;
 }
@@ -638,38 +638,15 @@ cursor: pointer;
 }
 
 .activeFrame {
-  border:1px solid blue
+  border:2px solid black;
 }
 
-.activeTime {
+/* .activeTime {
   background-color: black;
   color:white;
-}
+  padding: 3px;
+} */
 
 .columnFrame {
   width: 82px;
 }
-
-.testCurrent {
-  width: 60px;
-}
-
-.testCurrentActive {
-  width: 60px;
-}
-
-.testFrame {
-  width: 82px;
-  height:5em;
-  overflow-y:auto;
-	float:left;
-	position:absolute;
-  background-color:rgb(206, 206, 206);
-  background-color: grey;
-}
-
-.testFrameInv {
-  display: none;
-}
-
-
