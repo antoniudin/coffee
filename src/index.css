@@ -57,10 +57,10 @@ code {
 .page {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
+  align-items: center;
   justify-content: center;
   background-color: #fcfcfc;
-
+  min-height: 100vh;
 }
 
 .iconSquare {
@@ -506,97 +506,6 @@ code {
   margin-top:10px;
 }
 
-.providerContentItem {
-  width:250px;
-  height: 250px;
-  background-color: red;
-}
-
-/* .invisibleFrame {
-  display: none;
-  height: 0;
-  width:0;
-} */
-
-.dayFrame {
-  display: flex;
-  flex-direction: column;
-  margin-top: 20px;
-}
-
-.timeFrameContainer, .dayTimeFrame, .dayContainer {
-  display: flex;
-  flex-direction: row;  
-}
-
-.dayTimeFrame {
-  justify-content: center;
-  align-items: center;
-}
-
-.dayContainer {
-  margin-top:30x;
-  margin-bottom:30x;
-}
-
-.frameDelete {
-  width:18px;
-  height: 18px;
-  background: url(../src/img/deleteButton.svg);
-  border:none;
-}
-
-.frameAdd {
-  width:18px;
-  height: 18px;
-  background: url(../src/img/addButton.svg);
-  border:none;
-}
-
-.dropdownButtonOff {
-  width:18px;
-  height: 18px;
-  background: url(../src/img/chooseFrame.svg);
-  border:none;
-  justify-content: center;
-}
-
-.dropdownButtonOn {
-  width:18px;
-  height: 18px;
-  background: url(../src/img/chooseFrame.svg);
-  border:none;
-  justify-content: center;
-}
-
-.frameAdd:hover, .frameDelete:hover {
-cursor: pointer;
-}
-
-.timeFrameContainer {
-  justify-content:space-between;
-  align-items: center;
-  height: 25px;
-  line-height: 25px;
-  width: 180px;
-}
-
-.AvailableDays {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.weekSaveButton {
-  margin-top: 10px;
-}
-
-.eventListButtons {
-  display: flex;
-  flex-direction: row;
-  margin-right: 10px;
-}
-
 .row {
   display: flex;
   flex-direction: row;
@@ -609,3 +518,78 @@ cursor: pointer;
 .columnFrame {
   width: 82px;
 }
+
+.pinkLayer {
+  background-color: #fffce6;
+  width:100%;
+  height: 100vh;
+}
+
+/* pagination section */
+
+.flex_row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.content {
+  
+}
+
+.option {
+  margin: 5px 0px 0px 5px
+}
+
+.arrow {
+  width: 6px;
+  height: 6px;
+  border: 1px solid black;
+  border-top:none;
+  border-right:none;
+  margin: 10px;
+  transform: rotate(45deg);
+}
+
+.arrow:hover, .option:hover, .items:hover {
+  cursor: pointer;
+}
+
+.currentPage, .page {
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  border-radius: 50%;
+  text-align: center;
+  margin: 5px;
+}
+
+.currentPage {
+  background-color: grey;
+}
+
+.dropdown_list, .dropdown_list_hide {
+  position: absolute;
+  padding: 5px;
+  margin-left: 10px;
+}
+
+.dropdown_list_hide {
+  visibility: hidden;
+}
+
+.item {
+  background-color: #c7c7c7;
+  padding: 5px 10px 5px 10px;
+  border-radius: 100px 100px 100px 100px;
+}
+
+.items {
+  margin-left: 10px;
+}
+
+/* pagination section */
+
+
+
+
